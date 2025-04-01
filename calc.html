@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1e1e1e;
+    margin: 0;
+    color: #fff;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  .history {
+    border: 2px solid #4f4c4c;
+    padding: 10px;
+    border-radius: 10px;
+    height: 100vh;
+    width: 280px; 
+    overflow: auto;
+    background-color: #1a1a1a;
+  }
+  .history input {
+    border: none;
+    background: none;
+    color: #fff;
+  }
+  .calculator {
+    display: grid;
+    gap: 10px;
+    max-width: 250px;
+  }
+  .box {
+    grid-column: span 4;
+  }
+  .display {
+    width: 100%;
+    height: 60px;
+    font-size: 1.8em;
+    text-align: right;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: white;
+  }
+  button {
+    width: 100%;
+    height: 55px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #444;
+    color: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+  }
+  button:hover {
+    background-color: #666;
+  }
+  .clear {
+    grid-column: span 3;
+    background-color: #d9534f;
+  }
+  .clear:hover {
+    background-color: #c9302c;
+  }
+  .back {
+    background-color: #ffcc00;
+    color: black;
+  }
+  .equal-button {
+    background-color: #4caf50;
+    color: white;
+  }
+  .equal-button:hover {
+    background-color: #388e3c;
+  }
+  .delete-history {
+    background-color: #d9534f;
+    color: white;
+  }
+  .delete-history:hover {
+    background-color: #c9302c;
+  }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="history">
+        <div type="text" class ="history-text">
+      </div>
+    </div>
+      <div class="calculator">
+        <div class="box">
+          <input type="text" class="display" value="0" readonly />
+        </div>
+        <button class="back">AC</button>
+        <button class="calc-button" data-number="sin(">sin</button>
+        <button class="calc-button" data-number="cos(">cos</button>
+        <button class="calc-button" data-number="tan(">tan</button>
+        <button class="calc-button" data-number="(">(</button>
+        <button class="calc-button" data-number=")">)</button>
+        <button class="calc-button" data-number="√(">√</button>
+        <button class="calc-button" data-number="ln(">ln</button>
+        <button class="calc-button" data-number="!">!</button>
+        <button class="calc-button" data-number="7">7</button>
+        <button class="calc-button" data-number="8">8</button>
+        <button class="calc-button" data-number="9">9</button>
+        <button class="calc-button" data-number="/">/</button>
+        <button class="calc-button" data-number="4">4</button>
+        <button class="calc-button" data-number="5">5</button>
+        <button class="calc-button" data-number="6">6</button>
+        <button class="calc-button" data-number="*">*</button>
+        <button class="calc-button" data-number="1">1</button>
+        <button class="calc-button" data-number="2">2</button>
+        <button class="calc-button" data-number="3">3</button>
+        <button class="calc-button" data-number="-">-</button>
+        <button class="calc-button" data-number="0">0</button>
+        <button class="calc-button" data-number=".">.</button>
+        <button class="equal-button">=</button>
+        <button class="calc-button" data-number="+">+</button>
+        <button class="clear">Clear</button>
+        <button class="delete-history">Delete History</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    var buttons = document.querySelectorAll(".calc-button");
+    var input = document.querySelector(".display");
+    var equal = document.querySelector(".equal-button");
+    var clear = document.querySelector(".clear");
+    var back = document.querySelector(".back");
+    var historyText = document.getElementsByClassName("history-text")[0];
+    var historyItem = document.querySelector(".history-Item")
+    var globalhistoryDelete = document.querySelector(".delete-history")
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function (event) {
+        let value = event.target.dataset.number;
+        let currentValue = input.value;
+        if (value === ".") {
+          let parts = currentValue.split(/[\+\-\*\/]/);
+          let lastNumber = parts[parts.length - 1];
+          if (lastNumber.includes(".")) {
+            return;
+          }
+        }
+        if (input.value === "0" || input.value === "error") {
+          input.value = value;
+        } else if (
+          ["+", "-", "*", "/"].includes(value) &&
+          ["+", "-", "*", "/"].includes(input.value[input.value.length - 1])
+        ) {
+          return;
+        } else {
+          input.value += value;
+        }
+      });
+    });
+
+    
+    equal.addEventListener("click", function (event) {
+      try {
+        let expression = input.value;
+        let userInput = input.value;
+        // historyText.append(input.value);
+        if (input.value.includes("!")) {
+          let parts = input.value.split(/([\+\-\*\/])/);
+          for (let i = 0; i < parts.length; i++) {
+            if (parts[i].includes("!")) {
+              let num = parseInt(parts[i].replace("!", ""));
+              let fact = 1;
+              for (let j = num; j > 1; j--) {
+                fact *= j;
+              }
+              parts[i] = fact;
+            }
+          }
+          userInput = parts.join("");
+        } else {
+          userInput = 
+            input.value
+              .replaceAll("sin", "Math.sin")
+              .replaceAll("cos", "Math.cos")
+              .replaceAll("tan", "Math.tan")
+              .replaceAll("√", "Math.sqrt")
+              .replaceAll("ln", "Math.log10")
+          ;
+        }
+        const answer = eval(userInput);
+        input.value=answer
+
+        const history = document.createElement("div")
+
+        const historyItem = document.createElement("p")
+
+        historyItem.textContent = expression+" = "+answer
+        history.dataset.userInput = expression
+        historyItem.className = "history-Item"
+        
+        const historyDelete = document.createElement("button")
+        historyDelete.className = "deleteHistory"
+        historyDelete.textContent = "X"
+        historyDelete.addEventListener("click", clearEachHistory)
+
+        historyText.append(history)
+        history.appendChild(historyItem);
+        history.appendChild(historyDelete);
+       
+        history.addEventListener("click", addToScreen)
+      } catch (error) {
+        input.value = "error";
+      }
+    });
+
+    globalhistoryDelete.addEventListener("click", function(event){
+      historyText.textContent='';
+    })
+
+    clear.addEventListener("click", function (event) {
+      input.value = "0";
+    });
+
+    back.addEventListener("click", function (event) {
+      if (input.value.length == 1) {
+        input.value = 0;
+      } else {
+        input.value = input.value.slice(0, -1);
+      }
+    });
+
+    function clearEachHistory(e){
+      e.target.parentNode.remove();
+      e.stopPropagation();
+    }
+
+    function addToScreen(e){
+      input.value=e.currentTarget.dataset.userInput;
+    }
+  </script>
+</html>
