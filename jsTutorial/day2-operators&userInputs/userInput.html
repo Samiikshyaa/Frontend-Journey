@@ -7,11 +7,25 @@
 </head>
 <body>
     <H1>Here we are going to get the user input</H1>
-    <script src ="script.js">
-    </script>
+
+
+    <!-- using form -->
     <form>
     Your name: <input type="text" id = "uname">
-    <button type="submit" onclick="getName()">Submit</button>
+    <button type="submit" onclick="return getName()">Submit</button>
     </form>
+
+
+    <!-- using event listener -->
+    <h1>number displayer</h1>
+    <input type = "text" id = "number">
+
+
+
+    <h1> Odd or even calculator </h1>
+    <input type="text" id="testNumber">
+    <button type="submit" onclick="return getNumber()">Test!</button>
+    <script src ="script.js">
+    </script>
 </body>
 </html>
