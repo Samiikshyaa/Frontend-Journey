@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inner HTML</title>
+</head>
+<body>
+    <!-- <div id="myDiv">Hello, World</div>
+    <button onclick="updateContent()">Change Text</button>
+    <script>
+        function updateContent(){
+            document.getElementById("myDiv").innerHTML = "<b>Hello, Samikshya!</b>";
+        }
+    </script> -->
+    <div id = "content">
+        <button onclick="addContent()">Add content</button>
+    </div>
+        <script>
+            function addContent(){
+                document.getElementById("content").innerHTML = "<p> This is  a new paragraph </p> <ul> <li>ITEM 1 </li><li>ITEM 2 </li></ul>";
+            }
+        </script>
+</body>
+</html>
