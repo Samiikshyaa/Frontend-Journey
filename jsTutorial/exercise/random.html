@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Guess</title>
+  </head>
+  <body onload="displayLife()">
+    Life
+    <div id="life"></div>
+    Guess the number from 1-10
+    <form>
+      <input type="text" id="guess" />
+      <button type="button" onclick="testResult()" id="guessButton">
+        Test!
+      </button>
+    </form>
+    <div id="result"></div>
+    <script src="random.js"></script>
+  </body>
+</html>
