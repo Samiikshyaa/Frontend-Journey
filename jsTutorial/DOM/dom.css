@@ -1,0 +1,18 @@
+body {
+    background-color: beige;
+}
+h1 {
+    font-style: italic;
+    color: darkblue;
+}
+p, h1 {
+    background-color: azure;
+}
+p {
+    display: none;
+    background-color: yellow;
+    padding: 20px;
+}
+div:hover p {
+    display: block;
+}
