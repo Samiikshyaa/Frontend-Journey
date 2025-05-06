@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attribute Node Example</title>
+</head>
+<body>
+  <div id="example" class="sample-class" data-info="example-data">Hello, World!</div>
+  <script>
+    // Access the element
+    let div = document.getElementById('example');
+
+    // Get the attribute node
+    let classAttr = div.getAttributeNode('class');
+    let dataAttr = div.getAttributeNode('data-info');
+
+    // Print the attribute node properties
+    console.log('Class Attribute Node:', classAttr);
+    console.log('Class Attribute Name:', classAttr.nodeName); // Outputs: 'class'
+    console.log('Class Attribute Value:', classAttr.nodeValue); // Outputs: 'sample-class'
+
+    console.log('Data Attribute Node:', dataAttr);
+    console.log('Data Attribute Name:', dataAttr.nodeName); // Outputs: 'data-info'
+    console.log('Data Attribute Value:', dataAttr.nodeValue); // Outputs: 'example-data'
+  </script>
+</body>
+</html>

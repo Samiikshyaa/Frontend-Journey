@@ -211,7 +211,7 @@
         const historyItem = document.createElement("p")
 
         historyItem.textContent = expression+" = "+answer
-        history.dataset.userInput = expression
+        history.dataset.userInput = expression //setting the user input
         historyItem.className = "history-Item"
         
         const historyDelete = document.createElement("button")
