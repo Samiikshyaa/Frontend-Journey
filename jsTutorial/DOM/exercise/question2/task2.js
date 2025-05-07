@@ -14,19 +14,12 @@ let element = document.getElementsByClassName("item").namedItem("uniqueId");
 console.log(element); 
 
 
-
-
 let div = document.querySelectorAll(".box")
 // console.dir(div)
 console.log("\n",div)
 for(di of div){
     console.log(di)
 }
-
-
-
-
-
 
 
 //difference between the HTMLCollection and NodeList
