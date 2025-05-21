@@ -37,8 +37,8 @@ list.innerHTML += `<li class="item">Fourth Item</li>`;
 
 console.log('Second console log', itemsByClassName, itemsByQuerySelector);
 
-// console.log(itemsByClassName)
-list.getAttribute("id")
+console.log("items By class name:   ",itemsByClassName)
+console.log("------------- GET  Attributes:   ", list.getAttribute("id"))
 for(let item of itemsByQuerySelector){
     console.log(item)
     console.log(item.getAttribute("class"))
