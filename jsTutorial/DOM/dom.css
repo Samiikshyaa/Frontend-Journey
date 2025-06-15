@@ -9,13 +9,13 @@ p, h1 {
     background-color: azure;
 }
 p {
-    /* display: none; */
+    display: none;
     background-color: yellow;
     padding: 20px;
 }
-/* div:hover p {
+div:hover p {
     display: block;
-} */
+}
 button{
     background-color: blue;
     

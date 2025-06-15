@@ -1,0 +1,12 @@
+/* .buttons {
+       display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 10px;
+}  */
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+

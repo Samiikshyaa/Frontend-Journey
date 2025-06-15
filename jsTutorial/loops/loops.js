@@ -7,8 +7,6 @@ for(let i =1; i<=10; i++){
 }
 document.getElementById("table").innerHTML = text
 
-
-
 // ===============================================================================
 // for in loop
 
@@ -17,7 +15,6 @@ const array = ["Apple", "Banana", "Dragon Fruit", "Grapes"];
 for(let x in array){
     document.write(array[x]+"<br>")
 }
-
 
 
 // ===============================================================================
