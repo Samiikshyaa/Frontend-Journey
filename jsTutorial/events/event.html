@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS Events</title>
+  <style>
+    #message {
+      font-size: 1.2rem;
+      color: teal;
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="clickBtn">Click Me</button>
+  <p id="message">Waiting for click...</p>
+
+  <script>
+    const button = document.getElementById("clickBtn");
+    const msg = document.getElementById("message");
+
+    button.addEventListener("click", () => {
+      msg.textContent = "Button clicked!";
+    });
+
+    button.addEventListener("mouseover", () => {
+      msg.textContent = "You're hovering over the button!";
+    });
+
+    button.addEventListener("mouseout", () => {
+      msg.textContent = "Waiting for click...";
+    });
+  </script>
+</body>
+</html>
