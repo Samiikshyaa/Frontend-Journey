@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookies in JavaScript</title>
+</head>
+<body>
+  <h2>JavaScript Cookie Demo</h2>
+
+  <label for="username">Enter Name:</label>
+  <input type="text" id="username"/>
+  <br><br>
+
+  <button onclick="setCookie()">Set Cookie</button>
+  <button onclick="getCookie()">Get Cookie</button>
+  <button onclick="deleteCookie()">Delete Cookie</button>
+
+  <p id="output"></p>
+
+  <script>
+    function setCookie() {
+      const name = document.getElementById("username").value;
+      if (!name) {
+        document.getElementById("output").innerText = "Please enter a name.";
+        return;
+      }
+      // Set cookie to expire in 7 days
+      const date = new Date();
+      date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000);
+      const expires = "expires=" + date.toUTCString();
+      document.cookie = "username=" + name + ";" + expires + ";path=/";
+      document.getElementById("output").innerText = "Cookie set!";
+    }
+
+    function getCookie() {
+      const name = "username=";
+      const decodedCookie = decodeURIComponent(document.cookie);
+      const cookies = decodedCookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        let c = cookies[i].trim();
+        if (c.indexOf(name) === 0) {
+          document.getElementById("output").innerText = "Stored username: " + c.substring(name.length);
+          return;
+        }
+      }
+      document.getElementById("output").innerText = "No username cookie found.";
+    }
+
+    function deleteCookie() {
+      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.getElementById("output").innerText = "Cookie deleted.";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Session Storage Example</title>
+</head>
+<body>
+  <h2>Session Storage Demo</h2>
+
+  <input type="text" id="nameInput" placeholder="Enter your name" />
+  <button onclick="saveName()">Save to sessionStorage</button>
+  <button onclick="showName()">Show Stored Name</button>
+  <button onclick="removeName()">Remove Stored Name</button>
+
+  <p id="output"></p>
+
+  <script>
+    function saveName() {
+      const name = document.getElementById("nameInput").value;
+      sessionStorage.setItem("userName", name);
+      document.getElementById("output").innerText = "Name saved!";
+    }
+
+    function showName() {
+      const storedName = sessionStorage.getItem("userName");
+      if (storedName) {
+        document.getElementById("output").innerText = `Stored Name: ${storedName}`;
+      } else {
+        document.getElementById("output").innerText = "No name found in sessionStorage.";
+      }
+    }
+
+    function removeName() {
+      sessionStorage.removeItem("userName");
+      document.getElementById("output").innerText = "Name removed from sessionStorage.";
+    }
+  </script>
+</body>
+</html>
+

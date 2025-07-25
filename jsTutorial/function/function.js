@@ -1,18 +1,18 @@
-//traditional function
-const great = function (a, b) {
-  if (a > b) {
-    return a;
-  } else {
-    return b;
-  }
-};
-console.log("The greatest is : " +great(2,3))
+// //traditional function
+// const great = function (a, b) {
+//   if (a > b) {
+//     return a;
+//   } else {
+//     return b;
+//   }
+// };
+// console.log("The greatest is : " +great(2,3))
 
-//arrow function
-const add = (a, b) => {
-  return a + b;
-};
-console.log(add(3, 4));
+// //arrow function
+// const add = (a, b) => {
+//   return a + b;
+// };
+// console.log(add(3, 4));
 
 //callback functions
 const addition = (a,b) => a+b;
