@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Form Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin-top: 8px;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Signup Form</h2>
+  <form id="signupForm">
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" id="username" />
+      <div class="error" id="usernameError"></div>
+    </div>
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="email" id="email" />
+      <div class="error" id="emailError"></div>
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input type="password" id="password" />
+      <div class="error" id="passwordError"></div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // prevent form from submitting
+
+      // Clear previous errors
+      document.getElementById("usernameError").textContent = "";
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("passwordError").textContent = "";
+
+      let isValid = true;
+
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (username === "") {
+        document.getElementById("usernameError").textContent = "Username is required.";
+        isValid = false;
+      }
+
+      if (email === "" || !/^\S+@\S+\.\S+$/.test(email)) {
+        document.getElementById("emailError").textContent = "Please enter a valid email.";
+        isValid = false;
+      }
+
+      if (password.length < 6) {
+        document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert("Form submitted successfully!");
+        // Here you can proceed with sending data to the server
+      }
+    });
+  </script>
+</body>
+</html>
